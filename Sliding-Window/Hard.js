@@ -136,3 +136,98 @@ function find_string_anagrams(str,pattern){
 }
 
 console.log(`Find anagrams by index --- ${find_string_anagrams('abbcabc', 'abc')}`)
+
+//Given a string and a pattern, find the smallest substring in the given string which has all the characters of the given pattern.
+
+function find_substring(str, pattern){
+  let windowStart = 0
+  let charFrequency ={}
+  let substring = Infinity
+  let match = 0
+
+  for(let i=0;i<pattern.length;i++){
+    let char = pattern[i]
+    if(!(char in charFrequency)){
+      charFrequency[char] = 1
+    }
+    else{
+      charFrequency[char] +=1
+    }
+  }
+
+  for(let i=0;i<str.length;i++){
+    let rightChar = str[i]
+    if(rightChar in charFrequency){
+      charFrequency[rightChar] -= 1
+      if(charFrequency[rightChar] === 0){
+        match++
+      }
+    }
+
+    if(match === Object.keys(charFrequency).length){
+      if(substring.length > str.slice(windowStart, i)){
+        console.log("yasss?")
+        substring = str.slice(windowStart, i)
+      }
+    }
+
+    let leftChar = str[windowStart]
+    if(leftChar in charFrequency){
+      if(charFrequency[leftChar] === 0){
+        match--
+      }
+      charFrequency[leftChar] += 1
+    }
+    windowStart++
+  }
+  return charFrequency
+}
+
+console.log(`Shortest Substring --- ${find_substring('adcad', 'abc')}`)
+
+//Given a string and a pattern, find the smallest substring in the given string which has all the characters of the given pattern.
+
+function find_substring(str,pattern){
+  let windowStart = 0
+  let charFrequency = {}
+  let minLength = str.length
+  let stringStart = 0
+  let match = 0
+
+  for(let i=0;i<pattern.length;i++){
+    let char = pattern[i]
+    if(!(char in charFrequency)){
+      charFrequency[char] = 0
+    }
+    charFrequency[char]++
+  }
+
+  for(let i=0;i<str.length;i++){
+    let rightChar = str[i]
+    if(rightChar in charFrequency){
+      charFrequency[rightChar] -= 1
+      if(charFrequency[rightChar] >= 0){
+        match ++
+      }
+    }
+
+    while(match === pattern.length){
+      if(minLength > i - windowStart + 1){
+        minLength = i - windowStart + 1
+        stringStart = windowStart
+      }
+
+      let leftChar = str[windowStart]
+      if(leftChar in charFrequency){
+        if(charFrequency[leftChar] === 0){
+          match --
+        }
+        charFrequency[leftChar] += 1
+      }
+      windowStart ++
+    }
+  }
+  return str.slice(stringStart, stringStart + minLength)
+}
+
+console.log(`Shortest Substring containing letters --- ${find_substring('abdbca', 'abc')}`)
