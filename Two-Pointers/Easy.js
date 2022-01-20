@@ -29,7 +29,7 @@ function duplicates(array){
   let nonNextDuplicate = 1
 
   for(let i=0;i<array.length;i++){
-    if(array[nonNextDuplicate -1] !== array[i]){
+    if(array[nonNextDuplicate-1] !== array[i]){
       array[nonNextDuplicate] = array[i]
       nonNextDuplicate += 1
     }
@@ -37,4 +37,16 @@ function duplicates(array){
   return nonNextDuplicate
 }
 
-console.log(`Length of array containing no duplicates --- ${duplicates([2, 3, 3, 3, 6, 9, 9])}`)
+//This is an alternate solution of the same problem above. It utilizes a hashset to remember what numbers we've come across. If its in the set already skip it,
+function alternateDuplicates(array){
+  let numberFrequency = new Set()
+  let unique = 0
+  for(let i=0;i<array.length;i++){
+    if(!(numberFrequency.has(array[i]))){
+      numberFrequency.add(array[i])
+      unique++
+    }
+  }
+  return unique
+}
+console.log(`Length of array containing no duplicates --- ${alternateDuplicates([2, 2, 2, 11])}`)
