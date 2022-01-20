@@ -37,7 +37,8 @@ function duplicates(array){
   return nonNextDuplicate
 }
 
-//This is an alternate solution of the same problem above. It utilizes a hashset to remember what numbers we've come across. If its in the set already skip it,
+//This is an alternate solution of the same problem above. It utilizes a hashset to remember what numbers we've come across. If its in the set already ignore it, but if not, then add it to the set and increment the unique variable by 1.
+
 function alternateDuplicates(array){
   let numberFrequency = new Set()
   let unique = 0
@@ -49,4 +50,5 @@ function alternateDuplicates(array){
   }
   return unique
 }
-console.log(`Length of array containing no duplicates --- ${alternateDuplicates([2, 2, 2, 11])}`)
+// console.log(`Length of array containing no duplicates --- ${duplicates([2, 2, 2, 11])}`)
+console.log(`Length of array containing no duplicates --- ${alternateDuplicates([2, 3, 3, 3, 6, 9, 9])}`)
