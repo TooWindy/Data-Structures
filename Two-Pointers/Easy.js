@@ -52,3 +52,6 @@ function alternateDuplicates(array){
 }
 // console.log(`Length of array containing no duplicates --- ${duplicates([2, 2, 2, 11])}`)
 console.log(`Length of array containing no duplicates --- ${alternateDuplicates([2, 3, 3, 3, 6, 9, 9])}`)
+
+function squareArray(array){
+}
