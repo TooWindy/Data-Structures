@@ -54,4 +54,24 @@ function alternateDuplicates(array){
 console.log(`Length of array containing no duplicates --- ${alternateDuplicates([2, 3, 3, 3, 6, 9, 9])}`)
 
 function squareArray(array){
+  let p1 = 0
+  let p2 = array.length -1
+  let arr = []
+
+  let i=0
+  //Could also use a for loop: for(i=0;i<array.length;i++)
+  while(i < array.length){
+    if(Math.abs(array[p1] > array[p2])){
+      arr.push(Math.pow(array[p1], 2))
+      p1++
+    }
+    else{
+      arr.push(Math.pow(array[p2], 2))
+      p2--
+    }
+    i++
+  }
+  return arr.sort()
 }
+
+console.log(`Squared array --- ${squareArray([-3, -1, 0, 1, 2])}`)
