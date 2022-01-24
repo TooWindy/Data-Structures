@@ -61,7 +61,7 @@ function squareArray(array){
   let i=0
   //Could also use a for loop: for(i=0;i<array.length;i++)
   while(i < array.length){
-    if(Math.abs(array[p1] > array[p2])){
+    if(Math.abs(array[p1]) > array[p2]){
       arr.push(Math.pow(array[p1], 2))
       p1++
     }
@@ -71,7 +71,7 @@ function squareArray(array){
     }
     i++
   }
-  return arr.sort()
+  return arr.reverse()
 }
 
 console.log(`Squared array --- ${squareArray([-3, -1, 0, 1, 2])}`)
